@@ -1,4 +1,4 @@
-#include "LQueuedef.cpp"
+#include "LQueuedef.h" //changed to header as well
 #include <iostream>
 using namespace std;
 
@@ -7,6 +7,14 @@ LQueue :: LQueue()
   Queuehead = new headnode();
   Queuehead->count = 0;
   Queuehead->front = Queuehead->rear = NULL;
+}
+
+LQueue :: ~LQueue(){ //Added a destructor
+  int temp;
+  while(!emptyQueue()){
+    dequeue(temp);
+  }
+  delete Queuehead;
 }
 
 bool LQueue :: enqueue( int x)
@@ -29,7 +37,7 @@ bool LQueue :: enqueue( int x)
   return true;
 }
 
-bool LQueue :: dequeue(int &x)
+int LQueue :: dequeue(int &x)
 {
   if(emptyQueue())
   {
@@ -47,7 +55,7 @@ bool LQueue :: dequeue(int &x)
     }
     delete t;
     Queuehead->count--;
-    return true;
+    return x;
   }
 }
 
@@ -59,18 +67,20 @@ bool LQueue :: queueFront(int &x)
   }
   else
   {
-    x = Queuehead->front->data;
-    return (Queuehead->front->data);
+    x = Queuehead->front->data; 
+    return (x); // changed to x 
   }
 }
 
 bool LQueue::emptyQueue(){
-	if (Queuehead->count == 0)
+	if (Queuehead->count == 0) // QueueHead to Queuehead
 	    return true;
 	else
 		return false;
 }
 
 int LQueue::queueCount(){
-	return Queuehead->count;
+	return Queuehead->count; // QueueHead to Queuehead
 }
+
+

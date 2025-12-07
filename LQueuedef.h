@@ -1,3 +1,4 @@
+// changed from .cpp into .h file
 #include <iostream>
 using namespace std;
 
@@ -22,7 +23,7 @@ class LQueue
     LQueue();
 		~LQueue();
 		bool enqueue(int x);
-		bool dequeue(int &x);
+		int dequeue(int &x);
 		bool queueFront(int &x);
 		bool emptyQueue();
 		int queueCount();
