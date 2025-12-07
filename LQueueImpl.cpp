@@ -29,7 +29,7 @@ bool LQueue :: enqueue( int x)
   return true;
 }
 
-bool LQueue :: dequeue(int x)
+bool LQueue :: dequeue(int &x)
 {
   if(emptyQueue())
   {
@@ -65,12 +65,12 @@ bool LQueue :: queueFront(int &x)
 }
 
 bool LQueue::emptyQueue(){
-	if (QueueHead->count == 0)
+	if (Queuehead->count == 0)
 	    return true;
 	else
 		return false;
 }
 
 int LQueue::queueCount(){
-	return QueueHead->count;
+	return Queuehead->count;
 }
